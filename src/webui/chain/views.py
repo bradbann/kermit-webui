@@ -198,7 +198,8 @@ def execute_chain(request, xhr=None):
                                 agent_name = 'a7xoas'
                             elif serverType == 'WebLogic':
                                 agent_name = 'a7xows'
-                                
+                            
+			    error_server = check_servers(servers, agent_name)    
                             if error_server:
                                 logger.info("Servers selected does not contains desired agent")
                                 errors = True
