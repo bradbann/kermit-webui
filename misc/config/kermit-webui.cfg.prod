@@ -28,20 +28,20 @@ show_scheduler=false
 show_status_bar=True
 
 [webui-database]
-driver=django.db.backends.sqlite3
-name=/var/lib/kermit/webui/db/sqlite.db
-host=
-port=
-user=
-password=
-
-#Sample PostgreSQL configuration
-#driver=postgresql_psycopg2
-#name=kermit
+#driver=django.db.backends.sqlite3
+#name=/var/lib/kermit/webui/db/sqlite.db
 #host=
 #port=
-#user=kermit
-#password=kermit
+#user=
+#password=
+
+#Sample PostgreSQL configuration
+driver=postgresql_psycopg2
+name=kermit
+host=
+port=
+user=kermit
+password=kermit
 
 [webui_logs]
 main.file=/var/log/kermit/kermit-webui.log

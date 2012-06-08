@@ -32,9 +32,10 @@ build: clean
 	git archive --format=tar --prefix=$(PROGRAMNAME)/ master | gzip > ./dist/$(PROGRAMNAME)-$(RELEASE).tar.gz
 
 clean:
-	-rm -rf dist/ 
-	-rm -rf rpm-build/
-	-rm -rf $(TMPDIR)/$(BUILDDIR)
+	rm -rf dist/ 
+	rm -rf rpm-build/
+	rm -rf $(TMPDIR)/$(BUILDDIR)
+	find . -name *.pyc -exec m -rf {} \;
 
 clean_hard:
 
