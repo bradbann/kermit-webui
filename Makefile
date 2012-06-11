@@ -11,6 +11,7 @@ VERSION=$(shell grep "Version:" ./misc/specs/kermit-webui.spec)
 RELEASE=`expr substr '${VERSION}' 10 5`
 TMPDIR=/tmp
 BUILDDIR=build
+BRANCH=production
 
 all: rpms
 
@@ -29,7 +30,7 @@ build: clean
 	echo "- Create Changelog file"
 	git shortlog > changelog.txt
 	mkdir -p ./dist
-	git archive --format=tar --prefix=$(PROGRAMNAME)/ master | gzip > ./dist/$(PROGRAMNAME)-$(RELEASE).tar.gz
+	git archive --format=tar --prefix=$(PROGRAMNAME)/ $(BRANCH) | gzip > ./dist/$(PROGRAMNAME)-$(RELEASE).tar.gz
 
 clean:
 	rm -rf dist/ 
