@@ -18,10 +18,10 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 BASEDIR = path.dirname(path.abspath(__file__))
 SAML_CONFIG = {
     # full path to the xmlsec1 binary programm
-    'xmlsec_binary': '/usr/bin/xmlsec1',
+    'xmlsec_binary': CONF.get("saml2", "xmlsec.binary"),
 
     # your entity id, usually your subdomain plus the url to the metadata view
-    'entityid': 'AutomatixD1',
+    'entityid': CONF.get("saml2", "entityId"),
     
     #Added to prevent time not synchro between webui-server and IDP server
     'timeslack': '5000' ,
@@ -38,13 +38,13 @@ SAML_CONFIG = {
                 # url and binding to the assetion consumer service view
                 # do not change the binding or service name
                 'assertion_consumer_service': [
-                    ('http://npplam01.preprod.org/automatix/auth/saml2/SSO/',
+                    (CONF.get("saml2", "idp.url.login"),
                      saml2.BINDING_HTTP_POST),
                     ],
                 # url and binding to the single logout service view
                 # do not change the binding or service name
                 'single_logout_service': [
-                    ('http://npplam01.preprod.org/automatix/auth/saml2/SLO/',
+                    (CONF.get("saml2", "idp.url.logout"),
                      saml2.BINDING_HTTP_REDIRECT),
                     ],
                 },
@@ -65,10 +65,10 @@ SAML_CONFIG = {
                 #'https://localhost/simplesaml/saml2/idp/metadata.php': {
                 'idpdecathlon.preprod.org': {
                     'single_sign_on_service': {
-                        saml2.BINDING_HTTP_REDIRECT: 'https://preprod.idpdecathlon.oxylane.com:9031/idp/SSO.saml2',
+                        saml2.BINDING_HTTP_REDIRECT: CONF.get("saml2", "serviceprovider.url.login"),
                         },
                     'single_logout_service': {
-                        saml2.BINDING_HTTP_REDIRECT: 'https://preprod.idpdecathlon.oxylane.com:9031/idp/SLO.saml2',
+                        saml2.BINDING_HTTP_REDIRECT: CONF.get("saml2", "serviceprovider.url.logout"),
                         },
                     },
                 },
