@@ -38,13 +38,13 @@ SAML_CONFIG = {
                 # url and binding to the assetion consumer service view
                 # do not change the binding or service name
                 'assertion_consumer_service': [
-                    (CONF.get("saml2", "idp.url.login"),
+                    (CONF.get("saml2", "serviceprovider.url.login"),
                      saml2.BINDING_HTTP_POST),
                     ],
                 # url and binding to the single logout service view
                 # do not change the binding or service name
                 'single_logout_service': [
-                    (CONF.get("saml2", "idp.url.logout"),
+                    (CONF.get("saml2", "serviceprovider.url.logout"),
                      saml2.BINDING_HTTP_REDIRECT),
                     ],
                 },
@@ -65,10 +65,10 @@ SAML_CONFIG = {
                 #'https://localhost/simplesaml/saml2/idp/metadata.php': {
                 'idpdecathlon.preprod.org': {
                     'single_sign_on_service': {
-                        saml2.BINDING_HTTP_REDIRECT: CONF.get("saml2", "serviceprovider.url.login"),
+                        saml2.BINDING_HTTP_REDIRECT: CONF.get("saml2", "idp.url.login"),
                         },
                     'single_logout_service': {
-                        saml2.BINDING_HTTP_REDIRECT: CONF.get("saml2", "serviceprovider.url.logout"),
+                        saml2.BINDING_HTTP_REDIRECT: CONF.get("saml2", "idp.url.logout"),
                         },
                     },
                 },
