@@ -204,6 +204,9 @@ def clone_db(request, filters, dialog_name, xhr=None):
                             new_filter = "identity_filter=%s"%target_server
                             if server_response["data"] and "filename" in server_response["data"]:
                                 file_name = server_response["data"]["filename"]
+                            elif server_response["data"] and "data" in server_response["data"] and "filename" in server_response["data"]["data"]:
+                                file_name = server_response["data"]["data"]["filename"]
+                            if file_name:
                                 response, content = callRestServer(request.user, new_filter, 'oracledb', 'import_database', 'instancename=%s;schema=%s;filename=%s' %(target_instance, schema, file_name), True, True, True)
                                 if response.status == 200:
                                     s_json_content = json.loads(content)
